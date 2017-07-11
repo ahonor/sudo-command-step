@@ -1,0 +1,26 @@
+name: nixy-sudo-steps
+rundeckPluginVersion: 1.2
+author: (C) Alex Honor
+date: 07/10/2017
+version: 1.0.0
+providers:
+    - name: nixy-sudo-command-step
+      service: WorkflowNodeStep
+      title: 'nixy / sudo / command'
+      description: Run a command via sudo as another user
+      plugin-type: script
+      script-interpreter: /usr/bin/env bash
+      script-file: sudo-command
+      script-args: ${config.user} ${config.command}
+      config:
+        - name: user
+          title: User
+          type: String
+          required: true
+        - name: command
+          title: Command
+          type: String
+          required: true
+        - name: preserve-envronment
+          title: 'preserve-envronment (-E)'
+          type: Boolean

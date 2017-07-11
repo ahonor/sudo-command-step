@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -eu
+
+declare -r SUDOUSER=$1; shift;
+
+declare -a CLOPTS=()
+CLOPTS+=(-u "$SUDOUSER")
+[[ "${RD_CONFIG_PRESERVE_ENVIRONMENT:-}" == true ]] && CLOPTS+=("-E")
+
+
+echo "sudo ${CLOPTS[*]} -- $*"
+sudo "${CLOPTS[@]}" -- "$@"
+
+exit $?
