@@ -7,9 +7,9 @@ declare -r SUDOUSER=$1; shift;
 declare -a CLOPTS=()
 CLOPTS+=(-u "$SUDOUSER")
 [[ "${RD_CONFIG_PRESERVE_ENVIRONMENT:-}" == true ]] && CLOPTS+=("-E")
+[[ "${RD_CONFIG_RUN_LOGIN_SHELL:-}" == true ]] && CLOPTS+=("-i") 
 
-
-echo "sudo ${CLOPTS[*]} -- $*"
-sudo "${CLOPTS[@]}" -- "$@"
+echo "sudo ${CLOPTS[@]} -- $@"
+sudo ${CLOPTS[@]} -- $@
 
 exit $?
