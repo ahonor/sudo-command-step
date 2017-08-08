@@ -21,6 +21,9 @@ providers:
           title: Command
           type: String
           required: true
-        - name: preserve-envronment
-          title: 'preserve-envronment (-E)'
+        - name: preserve-environment
+          title: 'preserve-environment (-E)'
+          type: Boolean
+        - name: run-login-shell
+          title: 'run login shell (-i)' 
           type: Boolean
